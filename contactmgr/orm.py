@@ -1,5 +1,8 @@
 """Contacts database."""
 
+from __future__ import annotations
+from typing import Union
+
 from peewee import CharField, ForeignKeyField
 
 from mdb import Customer
@@ -33,3 +36,10 @@ class Contact(ContactModel):    # pylint: disable=R0903
     phone = CharField(null=True)
     mobile = CharField(null=True)
     email = CharField(null=True)
+
+    @classmethod
+    def from_json(cls, json: dict, customer: Union[Customer, int]) -> Contact:
+        """Creates a contact from a JSON-ish dict."""
+        record = super().from_json(json)
+        record.customer = customer
+        return record
