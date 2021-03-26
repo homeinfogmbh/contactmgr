@@ -3,9 +3,9 @@
 from __future__ import annotations
 from typing import Union
 
-from peewee import CharField, ForeignKeyField
+from peewee import CharField, ForeignKeyField, ModelSelect
 
-from mdb import Customer
+from mdb import Company, Customer
 from peeweeplus import EnumField, JSONModel, MySQLDatabase
 
 from contactmgr.config import CONFIG
@@ -43,3 +43,12 @@ class Contact(ContactModel):    # pylint: disable=R0903
         record = super().from_json(json)
         record.customer = customer
         return record
+
+    @classmethod
+    def select(cls, *args, cascade: bool = False, **kwargs) -> ModelSelect:
+        """Selects contacts."""
+        if not cascade:
+            return super().select(*args, **kwargs)
+
+        args = {cls, Customer, Company, *args}
+        return super().select(*args, **kwargs).join(Customer).join(Company)
