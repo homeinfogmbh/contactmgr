@@ -22,7 +22,7 @@ APPLICATION = Application('contactmgr')
 def list_() -> JSON:
     """Lists available contacts."""
 
-    return JSON([contact.to_json() for contact in get_contacts()])
+    return JSON([contact.to_json() for contact in get_contacts(CUSTOMER.id)])
 
 
 @APPLICATION.route('/', methods=['POST'], strict_slashes=False)
@@ -44,7 +44,7 @@ def add() -> JSONMessage:
 def patch(ident: int) -> JSONMessage:
     """Patches a contact."""
 
-    contact = get_contact(ident)
+    contact = get_contact(CUSTOMER.id, ident)
     contact.patch_json(request.json)
     return JSONMessage('Contact patched.', status=200)
 
@@ -56,5 +56,5 @@ def patch(ident: int) -> JSONMessage:
 def delete(ident: int) -> JSONMessage:
     """Deletes a contact."""
 
-    get_contact(ident).delete_instance()
+    get_contact(CUSTOMER.id, ident).delete_instance()
     return JSONMessage('Contact deleted.', status=200)
