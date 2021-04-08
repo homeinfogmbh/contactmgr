@@ -10,4 +10,5 @@ class ContactType(Enum):
     """Type of contact."""
 
     ADMINISTRATIVE = 'Verwaltung'
+    SOFTWARE = 'Software'
     TECHNICAL = 'Technik'
