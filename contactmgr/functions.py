@@ -9,7 +9,7 @@ from mdb import Customer
 from contactmgr.orm import Contact
 
 
-__all__ = ['get_contacts', 'get_contact']
+__all__ = ["get_contacts", "get_contact"]
 
 
 def get_contacts(customer: Union[int, Customer]) -> ModelSelect:

@@ -8,10 +8,10 @@ from contactmgr.wsgi import APPLICATION
 
 
 __all__ = [
-    'APPLICATION',
-    'CONFIG',
-    'Contact',
-    'ContactType',
-    'get_contact',
-    'get_contacts'
+    "APPLICATION",
+    "CONFIG",
+    "Contact",
+    "ContactType",
+    "get_contact",
+    "get_contacts",
 ]

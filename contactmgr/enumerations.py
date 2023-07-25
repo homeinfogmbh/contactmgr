@@ -3,12 +3,12 @@
 from enum import Enum
 
 
-__all__ = ['ContactType']
+__all__ = ["ContactType"]
 
 
 class ContactType(Enum):
     """Type of contact."""
 
-    ADMINISTRATIVE = 'Verwaltung'
-    SOFTWARE = 'Software'
-    TECHNICAL = 'Technik'
+    ADMINISTRATIVE = "Verwaltung"
+    SOFTWARE = "Software"
+    TECHNICAL = "Technik"

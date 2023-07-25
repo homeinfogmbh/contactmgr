@@ -3,7 +3,7 @@
 from configlib import loadcfg
 
 
-__all__ = ['CONFIG']
+__all__ = ["CONFIG"]
 
 
-CONFIG = loadcfg('contactmgr.conf')
+CONFIG = loadcfg("contactmgr.conf")
